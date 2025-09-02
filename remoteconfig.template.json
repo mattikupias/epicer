@@ -1,0 +1,9 @@
+{
+  "parameters": {
+    "GEMINI_MODEL_NAME": {
+      "defaultValue": {
+        "value": "gemini-1.5-flash-latest"
+      }
+    }
+  }
+}

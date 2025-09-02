@@ -1,0 +1,10 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /uploads/{allPaths=**} {
+      // Allow write access for now. 
+      // In a real app, you'd want to restrict this to authenticated users.
+      allow write;
+    }
+  }
+}

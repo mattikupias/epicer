@@ -1,1 +1,162 @@
-/* Add styles here */
+
+:root {
+    --font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --primary-color: oklch(65% 0.15 25); /* A warm, earthy orange */
+    --background-color: oklch(98% 0.02 25); /* A very light, warm gray */
+    --text-color: oklch(25% 0.02 25); /* A dark, soft black */
+    --surface-color: oklch(100% 0 0); /* White for cards/containers */
+    --shadow-color: oklch(20% 0.01 25 / 0.1);
+    --glow-color: oklch(75% 0.2 25 / 0.5);
+
+    --border-radius: 12px;
+    --spacing: 20px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: var(--spacing);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+#app-container {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid oklch(from var(--background-color) l - 0.1);
+    padding-bottom: var(--spacing);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: oklch(from var(--text-color) l + 0.3);
+    margin-top: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+}
+
+section, .container {
+    background-color: var(--surface-color);
+    padding: calc(var(--spacing) * 1.5);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px var(--shadow-color), 0 1px 3px var(--shadow-color);
+    text-align: center;
+}
+
+#upload-section h2, #error-container h2 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+/* Custom File Upload Button */
+#image-upload {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 25px -8px var(--glow-color);
+}
+
+.upload-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px var(--glow-color);
+}
+
+
+#loading-container, #error-container, #recipe-container {
+    padding: var(--spacing);
+    border-radius: var(--border-radius);
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+#error-container {
+    text-align: center;
+}
+
+textarea#manual-ingredients {
+    width: calc(100% - 40px);
+    min-height: 80px;
+    padding: 10px;
+    margin-top: var(--spacing);
+    border-radius: var(--border-radius);
+    border: 1px solid oklch(from var(--background-color) l - 0.1);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    resize: vertical;
+}
+
+button#manual-submit {
+    margin-top: var(--spacing);
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 25px -8px var(--glow-color);
+}
+
+button#manual-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px var(--glow-color);
+}
+
+#recipe-container {
+    text-align: left;
+}
+#recipe-container h2 {
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    body {
+        padding: 10px;
+    }
+    #app-container {
+        gap: var(--spacing);
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}

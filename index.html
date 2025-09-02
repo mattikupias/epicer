@@ -1,14 +1,67 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epiceR - Älykäs keittiöapulainen</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="app-container">
+        <header>
+            <h1>epiceR</h1>
+            <p>Tekoälyavusteinen keittiöapulaisesi, joka vähentää ruokahävikkiä.</p>
+        </header>
+        
+        <main>
+            <!-- User input section -->
+            <div id="input-container">
+                <h2>Mitä keittiössäsi on tänään?</h2>
+                <p>Lataa kuva aineksistasi tai kirjoita ne käsin.</p>
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                <label for="image-upload" class="upload-label">Lataa kuva</label>
+                <div class="separator">tai</div>
+                <div id="manual-input-area">
+                    <textarea id="manual-ingredients-input" rows="4" placeholder="Esim: jauheliha, sipuli, peruna..."></textarea>
+                    <button id="manual-ingredients-submit">Käytä näitä aineksia</button>
+                </div>
+            </div>
+
+            <!-- Ingredient confirmation section -->
+            <div id="ingredients-confirmation-container" class="hidden">
+                <h2>Vahvista ainekset</h2>
+                <p>Tässä tunnistamamme ainekset. Voit muokata listaa.</p>
+                <div id="ingredients-list-editor"></div>
+                <div class="add-ingredient-form">
+                    <input type="text" id="add-ingredient-input" placeholder="Lisää puuttuva ainesosa...">
+                    <button id="add-ingredient-btn">+</button>
+                </div>
+                <button id="generate-recipe-btn" class="primary-btn">Luo resepti</button>
+            </div>
+
+            <!-- Recipe display section -->
+            <div id="recipe-container" class="hidden">
+                <div id="recipe-content"></div>
+            </div>
+
+            <!-- Loading indicator -->
+            <div id="loading-container" class="hidden">
+                <div class="spinner"></div>
+                <p id="loading-text">Hetkinen...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 epiceR</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+    <!-- The storage and firestore libraries are no longer needed for this architecture -->
+    <!-- The vertex AI library is no longer needed on the client-side -->
+
 </body>
 </html>
